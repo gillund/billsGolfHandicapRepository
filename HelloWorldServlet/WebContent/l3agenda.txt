@@ -1,0 +1,14 @@
+SE 452/352 Week 3 Agenda
+
+1.  Finish HTML tutorial (examples 11-14)
+2.  Writing web applications using NetBeans
+3.  Review/continue with JSP
+4.  Programming Assignment 2
+5.  Intro to servlets
+
+Upcoming schedule
+
+Week 4:  Servlets (ch 6), SQL and Databases (ch 13, 14)
+Week 5:  DB, cont.; review for midterm
+Week 6:  Midterm (first 90 minutes), TBA (remaining 90
+  minutes)

@@ -1,0 +1,209 @@
+@charset "ISO-8859-1";
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,600,700);
+
+@media screen and (min-width:600px) {
+	.header {
+		background: -webkit-linear-gradient(top, rgba(0, 0, 0, .2),
+			rgba(0, 0, 0, .5));
+		background: linear-gradient(180deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .5));
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+		height: 50vh;
+		max-height: 50px
+	}
+}
+
+@media screen and (min-width:600px) {
+	.header .tagline {
+		display: block;
+		color: #fff;
+		max-width: 40em;
+		line-height: 140%;
+		font-size: 2.5rem
+	}
+	.header .tagline h1 {
+		display: none
+	}
+	.header .tagline em {
+		font-size: 140%;
+		color: #f3d350;
+		font-style: normal
+	}
+}
+
+.nav {
+	margin-top: 1.75rem /* navelements */
+}
+
+.nav .nav-elements { /* navbar */
+	
+}
+
+.nav .nav-elements .branding {
+	max-width: 360px;
+	margin: 0 auto
+}
+
+.nav .nav-elements .navbar {
+	margin: 0;
+	padding: 0;
+	line-height: 240%;
+	list-style-type: none;
+	margin-top: 2rem;
+	width: 100%
+}
+
+.nav .nav-elements .navbar a {
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+}
+
+.nav .nav-elements .navbar a:after {
+	content: '';
+	display: block;
+	height: 5px;
+	width: 0;
+	margin: 0 .5rem;
+	-webkit-transition: width .3s ease-out, background-color .3s ease-out;
+	transition: width .3s ease-out, background-color .3s ease-out
+}
+
+.nav .nav-elements .navbar a:hover {
+	color: #f3d350
+}
+
+.nav .nav-elements .navbar a:hover:after {
+	width: 100%;
+	background: #f3d350
+}
+
+@media screen and (min-width:600px) {
+	.nav .nav-elements {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex
+	}
+}
+
+@media screen and (min-width:600px) {
+	.nav .nav-elements .branding {
+		width: 30%;
+		margin: 0
+	}
+}
+
+@media screen and (min-width:600px) {
+	.nav .nav-elements .navbar {
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: end;
+		-webkit-justify-content: flex-end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+		-webkit-align-content: flex-start;
+		-ms-flex-line-pack: start;
+		align-content: flex-start;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap
+	}
+}
+.courses {
+	
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+	
+}
+
+div.myDate {
+	
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+	
+}
+div.login {
+	
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+	
+}
+
+
+label {
+	
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+	
+}
+h1 {
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+}
+
+h2 {
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+}
+title {
+	font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	-webkit-transition: 1s ease-out;
+	transition: 1s ease-out
+}
+select {
+    font-weight: 600;
+	color: #fff;
+	text-decoration: none;
+	padding: 0 1rem;
+	background-color:transparent;
+}
+select option {
+	background:rgba(0,0,0,0.4);
+}
+
+div.centered{
+	text-align:center;
+}
+
+body {
+	margin:0;
+	padding:0;
+	text-align:center;
+	background-image: url('agusta13.jpg');
+
+}
+

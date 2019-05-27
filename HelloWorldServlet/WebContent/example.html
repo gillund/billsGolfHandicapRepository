@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+<head>
+<script language="JavaScript" src=ScrollableTable.js></script>
+</head>
+
+<body onload="makeScrollableTable('tabela',true,'auto');">
+
+<table border=0 id=tabela align=center 
+  style="border-color: black; border-style: solid; border-width: 1;">
+<thead>
+<tr>
+  <th bgcolor=blue style="color: white" rowspan=2 valign=bottom>ColA</th>
+  <th bgcolor=blue style="color: white" colspan=2 align=center>ColBC</th>
+  <th bgcolor=blue style="color: white" colspan=2 align=center>ColDE</th>
+  <th bgcolor=blue style="color: white" rowspan=2 valign=bottom>ColF</th>
+</tr>
+<tr>
+  <th bgcolor=blue style="color: white">ColB</th>
+  <th bgcolor=blue style="color: white">ColC</th>
+  <th bgcolor=blue style="color: white">ColD</th>
+  <th bgcolor=blue style="color: white">ColE</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td></tr>
+<tr>
+  <td>A</td>
+  <td>BBBBBBBBBBBBBBBBBBBBBBBBB</td>
+  <td>C</td>
+  <td>D</td>
+  <td>E</td>
+  <td>F</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+  <td bgcolor=blue style="color: white" colspan=6 align=center>Footer</td>
+</tr>
+</tfoot>
+</table>
+</body>
+</html>
