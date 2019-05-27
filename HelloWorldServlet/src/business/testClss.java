@@ -20,7 +20,7 @@ public class testClss {
 		    String mytime =  sdf.format(cal.getTime()) ;
 			String newDteTime = newDate + " " + mytime;
 			
-			System.out.println(newDteTime);
+		
 			
 			
 	    	    String myDate1= "5/10/2018";
@@ -37,6 +37,7 @@ public class testClss {
 			    String mytime1 =  sdf.format(cal1.getTime()) ;
 				String newDteTime1 = newDate1 + " " + mytime1;
 				
+				System.out.println(newDteTime);
 				System.out.println(newDteTime1);
 				System.out.println(newDate1);
     }  
