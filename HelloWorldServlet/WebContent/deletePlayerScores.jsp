@@ -102,7 +102,7 @@ th {
   <br>
    
 
-   <form action="/jhandicap.html" method="post">
+   <form action="jhandicap.html" method="post">
         <input type="submit" value="Main Menu">
     </form>
 
