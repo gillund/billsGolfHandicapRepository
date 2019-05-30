@@ -335,7 +335,7 @@ public class PlayerHandicapServiceImpl implements PlayerHandicapService {
     }
 
         
-    protected void writePlayerScores(String aPlayer , Vector rounds, int remove){
+    protected void writePlayerScores(String aPlayer , Vector rounds, int remove) throws Exception{
     	
     	 String playerFile = getPlayerFileName(aPlayer);
     	 

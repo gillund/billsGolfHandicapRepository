@@ -59,17 +59,28 @@ public class PlayerServiceImpl implements PlayerService
 	       	if (afirstName.contains("<")  || afirstName.contains(">")){
 	       		throw new Exception("No Special characters allowed");
 	       	}
+	    	if (players == null)
+	       	{
+	       		getPlayers();
+	       	}
+	       	
 	       	if (players.get(afirstName) != null)
 	       	{
 	       	 throw new Exception("Player exists, name must be unique ");
 	       	}
-	       	
-	        int playerId =1;
+	       		       
+	       	int playerId=1;
 	        Player newPlayer = new Player(playerId, afirstName, aeMail, aphoneNumber,auserId,apassWord);
 	        String name = newPlayer.firstName;
+	        
+	        String validLogin = newPlayer.getUserId()+newPlayer.getPassword();
+	    	if (playerCacheByUserId.get(validLogin) != null)
+	       	{
+	       	 throw new Exception("UserId and Password taken ");
+	       	}
 	        players.put(name, newPlayer);
 	        // update user Id cache
-	        String validLogin = newPlayer.getUserId()+newPlayer.getPassword();
+	        validLogin = newPlayer.getUserId()+newPlayer.getPassword();
 			playerCacheByUserId.put(validLogin, newPlayer);
 			
 	        writePlayers(getFilename(), players,newPlayer,false);

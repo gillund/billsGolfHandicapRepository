@@ -3,42 +3,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" href="css/nav.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 <style>
-body {
-	margin:0;
-	padding:0;
-	text-align:center;
-	background-image: url('images/agusta13.jpg');
-
-}
-table {
-	font-weight: 600;
-	color: #fff;
-	text-shadow:black 0 0 1px;
-	text-decoration: none;
-	padding: 0;
-	border: none;
-	border-collapse:collapse;
-	width:80%;
-	transition: 1s ease-out;
-	margin:auto
-
-}
-h1 {
- font-weight: 800;
- color:#2EFE2E;
- display: block;
-
-}
-
-th {
- color:#2EFE2E;
-}
-
 </style>
 </head>
+<header id="home" class="header">
+ <nav class="nav" role="navigation">
+    <div class="container nav-elements">
+      <div class="branding">
+      </div><!-- branding -->
+      <ul class="navbar">
+       <h1>      <li><a href="jhandicap.html">Handicap Maintenance</a></li> </h1> 
+       <h1>      <li><a href="index.html">Home</a></li> </h1> 
+        </ul><!-- navbar -->
+    </div><!-- container nav-elements -->
+  </nav>
+
+</header>
  <%@ page import="java.text.SimpleDateFormat, com.argonne.playerService.*,com.argonne.courseServices.*,com.argonne.handicapServices.*, com.argonne.utils.*, java.util.* , servlets.*" %>
 
 <body  >
@@ -99,13 +82,5 @@ th {
    <%= message %>
 </font>
    
-  <br>
-   
-
-   <form action="jhandicap.html" method="post">
-        <input type="submit" value="Main Menu">
-    </form>
-
-
 </body>
 </html>

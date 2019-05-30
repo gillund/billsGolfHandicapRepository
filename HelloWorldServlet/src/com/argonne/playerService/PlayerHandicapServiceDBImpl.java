@@ -82,7 +82,7 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 	
 	 }
 	 
-	 	protected void writePlayerScores(String aPlayer , Vector rounds, int roundId)  {
+	 	protected void writePlayerScores(String aPlayer , Vector rounds, int roundId) throws Exception  {
 		 boolean result = false;
 		
 		 PlayerService psDbImpl =  JhandicapFactory.getPlayerService();
@@ -105,11 +105,11 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 		 else
 		 {
 			 System.err.println("UnSuccessfull :( update for " + aPlayer);
-				 
+			 
 		 }
 	 }
 	 
-	 protected boolean insert (String p, Round r,int playerId)  
+	 protected boolean insert (String p, Round r,int playerId) throws Exception  
 	 {
 		 String sql = "INSERT into round (playerId,rounddatetime, player, course, score, slope,rating, delta ) " 
 				 +
@@ -141,11 +141,15 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 				else
 				{
 					System.err.println("no rows affected");
+					return false;
 				}
 				
 				
 			} catch (SQLException e) {
 				System.err.println(e);
+				//Exception ex = new Exception(e);
+				throw e;
+				
 			} finally{
 				if (keys !=null) 
 				{
@@ -153,6 +157,7 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 						keys.close();
 					} catch (SQLException e) {
 						System.err.println( e);
+						throw e;
 					}
 				}
 			}
@@ -188,18 +193,12 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 
 	 public String fixDate(String myDate){
 		 // '2019-10-25 10:00:00 from 25/10/2019
-	        String year = myDate.substring(myDate.length()-4, myDate.length());
-		    int slsh = myDate.indexOf("/");
-		    String month = myDate.substring(0,slsh);
-		    String day = myDate.substring(slsh+1, myDate.length()-5);
-		    
-		    String newDate = year + "-" + month  + "-" +day;
-		
+	       
 			SimpleDateFormat sfd = new SimpleDateFormat("hh:mm:ss");
 			Calendar cal = Calendar.getInstance();
 		    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 		    String mytime =  sdf.format(cal.getTime()) ;
-			String newDteTime = newDate + " " + mytime;
+			String newDteTime = myDate + " " + mytime;
 			return newDteTime;
 		}
 	 

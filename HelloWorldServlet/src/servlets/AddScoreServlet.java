@@ -2,6 +2,8 @@ package servlets;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.Hashtable;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import com.argonne.courseServices.Course;
 import com.argonne.courseServices.CourseService;
+import com.argonne.db.DBUtil;
 import com.argonne.handicapServices.Round;
 import com.argonne.playerService.PlayerHandicapService;
 import com.argonne.utils.DuplicateException;
@@ -140,58 +143,17 @@ public String validateRequest(HttpServletRequest request, String message){
 		   newScore = Integer.parseInt(addScore);
 		}
 		catch(Exception e){
-		   newScore = 0;
+		  message = "Invalid Score";
 		}
 		
-	   if (addDate != null){
-			if (addDate.equals("")){
-				message = "Date Required";
-			}
-			else
-			{
-		        Date dt2 = null;     
-		        try
-		        {
-		                DateFormat df = DateFormat.getDateInstance(DateFormat.SHORT);
-		                df.setLenient(false);  // this is important!
-		                dt2 = df.parse(addDate);
-		        }
-		        catch (java.text.ParseException e)
-		        {
-		        	message = "Invalid Date = " + addDate;
-		        }
-		        catch (IllegalArgumentException e)
-		        {
-		        	message = "Invalid Date = " + addDate;
-		        }
-
-			}
-		}
-		else {
-			message ="Date Required";
-		}
-		
-		if (addCourse != null)
+	    if (DBUtil.validateJavaDate(addDate)  == false)
 		{
-			if (addCourse[0] != null)
-			{
-			   if (addCourse.equals("")){
-				 message = "Course needs to be Highlighted";
-				}
-				else
-				{
-					
-				}
-			 }
-			 else 
-			 {
-				   message = "Course needs to be Highlighted";
-			}
+				message = "Date Required";
 		}
-		else {
-		   message = "Course needs to be Highlighted";
+		if (addCourse == null || addCourse == null)
+		{
+			message = "Course needs to be Highlighted";
 		}
-		
 		if (newScore == 0){
 			message = "Score must be greater than Zero ";
 		}
@@ -204,7 +166,7 @@ public String validateRequest(HttpServletRequest request, String message){
 		   try {
 			 phs.addScore(addDate, getSessionPlayer(request), addCourse[0], newScore);
 		   } catch (Exception e) {
-			  message = "Score Not Added - Bad Error";
+			  message = "Score Not Added - Bad input or Database problem";
 			   e.printStackTrace();
 		   } catch (DuplicateException e) {
               message = "Score Already added";
@@ -250,5 +212,5 @@ private void setSessionPlayer(HttpServletRequest request, String aplayer) {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	 
 }

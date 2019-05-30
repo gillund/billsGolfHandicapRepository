@@ -94,10 +94,6 @@
    
 
 </p>
-     <form action="jhandicap.html" method="post">
-        <input type="submit" value="Return">
-    </form>
-
  </body>
  </html>
  
