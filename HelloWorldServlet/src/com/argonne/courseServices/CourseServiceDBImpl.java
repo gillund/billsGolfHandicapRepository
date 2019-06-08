@@ -19,7 +19,7 @@ public class CourseServiceDBImpl extends CourseServiceImpl {
 	}
 	
 	
-	 protected void writeCourses(String aFilename, Hashtable aCourseCollection,Course c, boolean remove) {
+	 protected Course writeCourses(String aFilename, Hashtable aCourseCollection,Course c, boolean remove) {
 	 
 		 boolean result = false;
 		 if (remove == false)
@@ -40,7 +40,7 @@ public class CourseServiceDBImpl extends CourseServiceImpl {
 			 System.err.println("UnSuccessfull :( update for " + c.getName() + "With courseId = " + c.getCourseId());
 				 
 		 }
-	 
+	     return c;
 	 
 	 }
 	 
@@ -49,7 +49,7 @@ public class CourseServiceDBImpl extends CourseServiceImpl {
 	 
 	 protected Hashtable readCourses(String aFilename) {
 
-		 Hashtable<String, Course>  tempHash = new Hashtable<String, Course>();
+		 Hashtable  tempHash = new Hashtable();
 		 try 
 		 (
 				 	Connection conn = DBUtil.getConnection(DBType.MYSQL);
@@ -67,7 +67,7 @@ public class CourseServiceDBImpl extends CourseServiceImpl {
 				 c.setRating(rs.getFloat("rating"));
 				 c.setYardage(rs.getInt("yardage"));
 				 c.setComments(rs.getString("comment"));
-				 tempHash.put(c.getName() , c);
+				 tempHash.put(c.getCourseId() , c);
 			 }
 			 
 		} 

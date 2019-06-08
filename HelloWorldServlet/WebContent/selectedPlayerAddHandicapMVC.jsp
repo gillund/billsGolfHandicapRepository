@@ -261,15 +261,16 @@ th {
             <td><input type="date" name="Date" size="5" style="cursor: text" /></td>
             <td align="right">Course:</td>
       
-            <td> <select size =3 name="courses" multiple>
+            <td> <select size =1 name="courses" multiple>
             <%
         	   Vector sortedCourses = (Vector) request.getAttribute("Courses");
         	   if (sortedCourses != null) {
         	      Iterator i2 = sortedCourses.iterator();
         	      while(i2.hasNext()){
         		     Course c 			= (Course) i2.next();
+        		     String s = c.getName() + "-" + c.getComments() + "," + " Slope= "+ c.getSlope() + " Rating= " + c.getRating();
              %>
-               <option  value="<%= c.name.replace('+',' ') %>" > <%= c.name %>  </option>
+               <option  value="<%= c.getCourseId() + "," +c.getName()   %>" > <%= s %>  </option>
                
             <%
         	      }

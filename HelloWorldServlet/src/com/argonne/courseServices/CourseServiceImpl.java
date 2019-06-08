@@ -48,8 +48,8 @@ public class CourseServiceImpl implements CourseService
         return (Hashtable) getCourses().clone();
     }
     
-    public Course getCourse(String courseName) {
-        return (Course) getCourses().get(courseName);
+    public Course getCourse(int courseId) {
+        return (Course) getCourses().get(courseId);
     }
 
     public Hashtable addCourse(String aName, float aRating, int aSlope, int theYardage, String theComments) throws Exception {
@@ -64,8 +64,16 @@ public class CourseServiceImpl implements CourseService
         }
         
         Course newCourse = new Course(aName, aRating, aSlope, theYardage, theComments);
-        courses.put(newCourse.name, newCourse);
-        writeCourses(getFilename(), courses,newCourse, false);
+       
+        Course c = writeCourses(getFilename(), courses,newCourse, false);
+        if (c !=null)
+        {
+        	courses.put(c.getCourseId(), c);
+        }
+        else
+        {
+        	courses.put(newCourse.getName(),newCourse);
+        }
         return getCourses();
     }
     public Hashtable removeCourse(String courseName) throws Exception {
@@ -84,8 +92,9 @@ public class CourseServiceImpl implements CourseService
     		throw new Exception ("Can't delete course does not exist");
     	}
     	
-        courses.remove(courseName);
-        writeCourses(getFilename(), courses,course, true);
+       
+        Course c = writeCourses(getFilename(), courses,course, true);
+        courses.remove(c.getCourseId());
         return getCourses();
     
     }
@@ -163,7 +172,7 @@ public class CourseServiceImpl implements CourseService
         return new Course(name, (float) Double.parseDouble(rating), Integer.parseInt(slope), Integer.parseInt(yardage), comments);
     }
 
-    protected void writeCourses(String aFilename, Hashtable aCourseCollection, Course c, boolean remove) {
+    protected Course writeCourses(String aFilename, Hashtable aCourseCollection, Course c, boolean remove) {
     	
        BufferedWriter writer = null;
 
@@ -191,6 +200,7 @@ public class CourseServiceImpl implements CourseService
                 }
             }
         }
+        return null;
     }
 
     protected BufferedWriter getOutputStream(String aFilename) throws IOException {

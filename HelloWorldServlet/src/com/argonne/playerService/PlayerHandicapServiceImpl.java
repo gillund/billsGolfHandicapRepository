@@ -42,13 +42,13 @@ public class PlayerHandicapServiceImpl implements PlayerHandicapService {
         playerService = aPlayerService;
     }
     
-    public Vector addScore(String aDate, String aPlayer, String aCourseName, int aScore) throws Exception, DuplicateException {
+    public Vector addScore(String aDate, String aPlayer, String aCourseName, int aScore, int courseId) throws Exception, DuplicateException {
         
     	Player player = playerService.getPlayer(aPlayer);
     	if (player == null)
     		throw new Exception("Player not found : " + aPlayer);
     	
-    	Course aCourse = getCourseService().getCourse(aCourseName);
+    	Course aCourse = getCourseService().getCourse(courseId);
         if ( aCourse == null ) {
             throw new Exception("Course Not Found: " + aCourseName);
         }
@@ -325,8 +325,11 @@ public class PlayerHandicapServiceImpl implements PlayerHandicapService {
         String date = st.nextToken();
         String courseName = st.nextToken();
         String score  = st.nextToken();
+        String courseId = st.nextToken();
         
-        Course aCourse = getCourseService().getCourse(courseName);
+        int intCourseId = Integer.parseInt(courseId);
+        
+        Course aCourse = getCourseService().getCourse(intCourseId);
         if ( aCourse == null ) {
             throw new Exception("Course Not Found: " + courseName);
         }

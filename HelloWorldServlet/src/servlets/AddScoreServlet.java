@@ -163,8 +163,15 @@ public String validateRequest(HttpServletRequest request, String message){
 		{
 		   PlayerHandicapService phs	= JhandicapFactory.getPlayerHandicapService();
 		
+		   int comma = addCourse[0].indexOf(",");
+		   String charCourseId = addCourse[0].substring(0, comma);
+		   String courseName = addCourse[0].substring(comma+1, addCourse[0].length());
+		   addCourse[0] = courseName;
+		   
+		   
 		   try {
-			 phs.addScore(addDate, getSessionPlayer(request), addCourse[0], newScore);
+			   int courseID= Integer.parseInt(charCourseId);
+			   phs.addScore(addDate, getSessionPlayer(request), addCourse[0], newScore,courseID);
 		   } catch (Exception e) {
 			  message = "Score Not Added - Bad input or Database problem";
 			   e.printStackTrace();

@@ -259,17 +259,7 @@ public class SinglesMatchFrame extends JFrame  {
        
     public void setCouseName(String selectedCourseName ) {
     	
-       courseNameOnly = (String) selectedCourseName;
-    	
-       SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
-       Calendar cal = Calendar.getInstance();
-   
-       String date = sdf.format(cal.getTime());
-       dateText.setText(date);
-       
-       Course course = courseService.getCourse(selectedCourseName);
-       String newCourseName =  (selectedCourseName + " (R: " + course.rating + "  S: " + course.slope + ")");
-       courseName.setText(newCourseName); 
+      
        
     }
     
@@ -315,7 +305,7 @@ public class SinglesMatchFrame extends JFrame  {
             int intScore = score.intValue();
         	if ( intScore > 0){
         		try{
-        		  playerHandicapService.addScore(dateText.getText(), (String) playerData[i][0], courseNameOnly, intScore);
+        		  playerHandicapService.addScore(dateText.getText(), (String) playerData[i][0], courseNameOnly, intScore,0);
         		  Log.information("Posting...-> " + dateText.getText() + " " + (String) playerData[i][0]+ " " + courseNameOnly  +" " + intScore);
         		}
         		catch(DuplicateException e){

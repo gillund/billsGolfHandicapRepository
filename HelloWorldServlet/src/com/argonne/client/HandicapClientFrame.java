@@ -518,7 +518,7 @@ public class HandicapClientFrame extends JFrame implements CourseUpdateConsumer 
             
             // handicapService.addScore(date.getText(), courseName, newScore);
             
-            Vector newRoundsForPlayer = playerHandicapService.addScore(date.getText(), playerName, courseName, newScore);
+            Vector newRoundsForPlayer = playerHandicapService.addScore(date.getText(), playerName, courseName, newScore,0);
             
             score.setText("");
             date.setText("");

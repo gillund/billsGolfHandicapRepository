@@ -7,6 +7,12 @@
 <link rel="stylesheet" href="css/nav.css">
 <HEAD>
 <style type="text/css">
+div.playerContainer{
+    overflow: scroll;
+   text-align: center;
+   margin: auto;
+   max-height:400px;
+}
 </style>
 </head>
 <header id="home" class="header">
@@ -26,7 +32,7 @@
   <center>
     <i><h1 align="center" > Course List </h1></i>
    <div class="playerContainer">
-  	 <table align="center" border="2" cellspacing="2" cellpadding="2">
+  	 <table name="course" align="center" border="2" cellspacing="2" cellpadding="2">
   	 <tr>
       		<th align="center"> Course Name </th>
       		<th align="center"> Slope </th>

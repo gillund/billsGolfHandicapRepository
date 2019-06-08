@@ -39,7 +39,7 @@ public interface CourseService {
 
     public Hashtable getAllCourses();
     
-    public Course getCourse(String courseName);
+    public Course getCourse(int courseId);
 
     public Hashtable addCourse(String aName, float aRating, int aSlope, int theYardage, String theComments) throws Exception;
 
