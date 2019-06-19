@@ -261,7 +261,7 @@ th {
             <td><input type="date" name="Date" size="5" style="cursor: text" /></td>
             <td align="right">Course:</td>
       
-            <td> <select size =1 name="courses" multiple>
+            <td> <select size =5 name="courses" multiple>
             <%
         	   Vector sortedCourses = (Vector) request.getAttribute("Courses");
         	   if (sortedCourses != null) {
