@@ -82,16 +82,16 @@ INSERT INTO `players` (`playerId`, `name`, `email`,`phonenumber`,`userid`,`passw
 --
 -- Table structure for table `packages`
 --
-
+DROP TABLE IF EXISTS `courses`;
 CREATE TABLE IF NOT EXISTS `courses` (
   `courseId` 	int(11) NOT NULL AUTO_INCREMENT,
-  `coursename` 	varchar(50) NOT NULL,
+  `coursename` 	varchar(80) NOT NULL,
   `slope`		int(4) NOT NULL,
   `rating` 		float(4) NOT NULL,
   `yardage` 	int(4) NOT NULL,
   `comment` 	varchar(30) NOT NULL,
   PRIMARY KEY (`courseId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `packages`
