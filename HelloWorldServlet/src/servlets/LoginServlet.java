@@ -1,11 +1,15 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -121,7 +125,7 @@ public class LoginServlet extends HttpServlet {
 			 
 			  CourseService courseService 			= JhandicapFactory.getCourseService();
 			  Hashtable courses 					= courseService.getAllCourses();
-			  Vector sortedCourses 					= getCourseList(courses);
+			  List sortedCourses 					= getCoursesJava8(courses);
 			  request.setAttribute("Courses", sortedCourses);
 			
 		 }
@@ -153,29 +157,15 @@ public class LoginServlet extends HttpServlet {
 	 return playerScores;
  }
 
- public Vector getCourseList(Hashtable courses) {
-     
-     Vector sortedCourses 					= new Vector();
-     Enumeration enumeration 				= courses.elements();
-     
-     while ( enumeration.hasMoreElements() ) {
-         Course course1 = (Course) enumeration.nextElement();
-         boolean notInserted = true;
-         for ( int i = 0 ; i < sortedCourses.size(); i++ ) {
-             Course course2 = (Course) sortedCourses.elementAt(i);
-             if ( course1.name.compareTo(course2.name) < 0 ) {
-                 sortedCourses.add(i, course1);
-                 notInserted = false;
-                 break;
-             }
-         }
-         if ( notInserted ) {
-             sortedCourses.add(course1);
-         }
-     }
-     return sortedCourses;
- 
- } 
+  public List getCoursesJava8(Hashtable courses)
+ {
+	  
+	 List<Course> sortedCourses = (List<Course>) courses.values().stream().sorted(Comparator.comparing(Course::getName))
+			 .collect(Collectors.toList());
+	 
+	 return sortedCourses;
+	 
+ }
  private void setSessionPlayer(HttpServletRequest request, String aplayer) {
  	
  	 HttpSession session = request.getSession(true);

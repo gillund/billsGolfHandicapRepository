@@ -1,20 +1,37 @@
 package com.argonne.client;
 
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.WindowConstants;
+import javax.swing.table.AbstractTableModel;
+
+import com.argonne.courseServices.Course;
 import com.argonne.courseServices.CourseService;
 import com.argonne.courseServices.CourseServiceImpl;
-import com.argonne.courseServices.Course;
-import com.argonne.courseServices.CourseUpdateSupplier;
 import com.argonne.courseServices.CourseUpdateConsumer;
+import com.argonne.courseServices.CourseUpdateSupplier;
 import com.argonne.utils.Log;
-
-import java.util.Vector;
-import java.util.Hashtable;
-import java.util.Enumeration;
-import java.awt.*;
-import java.awt.event.*;
-
-import javax.swing.*;
-import javax.swing.table.AbstractTableModel;
 
 /**
 *   This is the Web based Jhandicap ....
@@ -243,7 +260,7 @@ public class CourseClientFrame extends JFrame implements CourseUpdateSupplier {
         }
         return sortedCourses;
     }
-
+    
     void closeButton_actionPerformed(ActionEvent event) {
         Log.debug("Closing Client...");
         this.setVisible(false);

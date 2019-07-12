@@ -263,7 +263,7 @@ th {
       
             <td> <select size =5 name="courses" multiple>
             <%
-        	   Vector sortedCourses = (Vector) request.getAttribute("Courses");
+        	   List sortedCourses = (List) request.getAttribute("Courses");
         	   if (sortedCourses != null) {
         	      Iterator i2 = sortedCourses.iterator();
         	      while(i2.hasNext()){

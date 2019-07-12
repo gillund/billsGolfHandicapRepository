@@ -45,7 +45,7 @@ div.playerContainer{
    	 <tr align="left" >
    	 <%@ page import="com.argonne.courseServices.*, com.argonne.utils.*, java.util.*" %>
    	<%
-   	   Vector sortedCourses = (Vector) request.getAttribute("Courses");
+   	   List sortedCourses = (List) request.getAttribute("Courses");
    	   if (sortedCourses != null) {
    	      Iterator i = sortedCourses.iterator();
    	      while(i.hasNext()){

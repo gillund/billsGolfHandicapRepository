@@ -32,7 +32,7 @@
 <form  action="jhandicapCourseServlet" method="get">
   <select size="20" name="courseList" multiple >
   	<%
-   	   Vector sortedCourses = (Vector) request.getAttribute("Courses");
+   	   List sortedCourses = (List) request.getAttribute("Courses");
    	   Iterator i = sortedCourses.iterator();
    	   while(i.hasNext()){
    		  Course c 			= (Course) i.next();

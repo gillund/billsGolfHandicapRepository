@@ -1,9 +1,14 @@
 package servlets;
 
 import java.io.*;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Vector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +41,7 @@ public class jhandicapCourseServlet extends HttpServlet {
 		  Course c = getCourse(request);  
 		  CourseService courseService 			= JhandicapFactory.getCourseService();
 		  Hashtable courses 					= courseService.getAllCourses();
-		  Vector sortedCourses 					= getCourseList(courses);
+		  List sortedCourses 					= getCoursesJava8(courses);
 		  request.setAttribute("Courses", sortedCourses);
 		  request.setAttribute("Course", c);
 		  url = "/addAcourseMVC.jsp";
@@ -50,7 +55,7 @@ public class jhandicapCourseServlet extends HttpServlet {
 		  }
 		  CourseService courseService 			= JhandicapFactory.getCourseService();
 		  Hashtable courses 					= courseService.getAllCourses();
-		  Vector sortedCourses 					= getCourseList(courses);
+		  List sortedCourses 					= getCoursesJava8(courses);
 		  request.setAttribute("Courses", sortedCourses);
 		  url = "/deleteCourse.jsp";  
 	  }
@@ -83,31 +88,14 @@ public class jhandicapCourseServlet extends HttpServlet {
   }
   
   
-  
-  
-  public Vector getCourseList(Hashtable courses) {
-      
-      Vector sortedCourses 					= new Vector();
-      Enumeration enumeration 				= courses.elements();
-      
-      while ( enumeration.hasMoreElements() ) {
-          Course course1 = (Course) enumeration.nextElement();
-          boolean notInserted = true;
-          for ( int i = 0 ; i < sortedCourses.size(); i++ ) {
-              Course course2 = (Course) sortedCourses.elementAt(i);
-              if ( course1.name.compareTo(course2.name) < 0 ) {
-                  sortedCourses.add(i, course1);
-                  notInserted = false;
-                  break;
-              }
-          }
-          if ( notInserted ) {
-              sortedCourses.add(course1);
-          }
-      }
-      return sortedCourses;
-  
-  } 
+  public List getCoursesJava8(Hashtable courses)
+  {
+	
+	  List<Course> sortedCourses = (List<Course>) courses.values().stream().sorted(Comparator.comparing(Course::getName))
+			  .collect(Collectors.toList());
+	  return sortedCourses;
+ 	 
+  }
   public Course getCourse(HttpServletRequest request){
 	  
 	  String courseName 	= request.getParameter("CourseName");

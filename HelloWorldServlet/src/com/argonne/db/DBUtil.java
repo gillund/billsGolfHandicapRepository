@@ -17,13 +17,33 @@ public class DBUtil {
 			"jdbc:mysql://localhost/playerhandicapdb";
 	private static final String M_CONN_STRING_explorecalifornia =
 			"jdbc:mysql://localhost/explorecalifornia";
+	
+	private static final String AWS_USERNAME = System.getProperty("RDS_USERNAME");
+	private static final String AWS_PASSWORD = System.getProperty("RDS_PASSWORD");
+	private static final String hostname = System.getProperty("RDS_HOSTNAME");
+	private static final String port = System.getProperty("RDS_PORT");
+	private static final String jdbcUrl = "jdbc:mysql://" + hostname + ":" +
+	    port + "/" + "playerHandicapDb" + "?user=" + AWS_USERNAME + "&password=" + AWS_PASSWORD;
+	
 	public static Connection getConnection(DBType dbType) throws SQLException {
 		
+		loadDababaseConnector();
+		
+		String value = System.getenv("LOCAL");
+		
+		boolean runLocal = Boolean.valueOf(value);
+		if (runLocal)
+		{
+			dbType=DBType.MYSQL;
+		}
 		switch (dbType) {
 		case MYSQL:
 			return DriverManager.getConnection(M_CONN_STRING_PLAYERHANDICAPDB, USERNAME, PASSWORD);
 		case HSQLDB:
 			return DriverManager.getConnection(H_CONN_STRING, USERNAME, PASSWORD);
+		case AWS_MYSQL:
+			System.out.println("RETURNING CONNECTION = " +jdbcUrl );
+			return DriverManager.getConnection(jdbcUrl);
 		default:
 			return null;
 		}
@@ -75,5 +95,22 @@ public class DBUtil {
 		    return true;
 		}
 	   }
+	private static void loadDababaseConnector()
+	
+	{
+		System.out.println("Printing java classpath");
+		System.out.println(System.getProperty("java.class.path"));
+	
+		try 
+		{
+			System.out.println("Loading driver...");
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(ClassNotFoundException e)
+		{
+			System.out.println("driver NOT found");
+			e.printStackTrace();
+		}
+	}
 	
 }

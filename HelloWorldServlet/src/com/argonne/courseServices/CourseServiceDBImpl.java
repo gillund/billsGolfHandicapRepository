@@ -52,7 +52,7 @@ public class CourseServiceDBImpl extends CourseServiceImpl {
 		 Hashtable  tempHash = new Hashtable();
 		 try 
 		 (
-				 	Connection conn = DBUtil.getConnection(DBType.MYSQL);
+				 	Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					Statement stmt = conn.createStatement();
 					ResultSet rs = stmt.executeQuery(
 							"select * from courses " );
@@ -87,7 +87,7 @@ public class CourseServiceDBImpl extends CourseServiceImpl {
 			
 			ResultSet keys = null;
 			try (
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 					) 
 			    {
@@ -131,7 +131,7 @@ public class CourseServiceDBImpl extends CourseServiceImpl {
 	 {
 			String sql = "DELETE FROM courses WHERE courseId = ?";
 			try (
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					)
 			{

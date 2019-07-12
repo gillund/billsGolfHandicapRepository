@@ -24,7 +24,7 @@ public class PlayerServiceDBImpl extends PlayerServiceImpl {
 		 Hashtable<String, Player>  tempHash = new Hashtable<String, Player>();
 		 try 
 		 (
-				 	Connection conn = DBUtil.getConnection(DBType.MYSQL);
+				 	Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					Statement stmt = conn.createStatement();
 					ResultSet rs = stmt.executeQuery(
 							"select * from players " );
@@ -79,7 +79,7 @@ public class PlayerServiceDBImpl extends PlayerServiceImpl {
 			
 			ResultSet keys = null;
 			try (
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 					) {
 				stmt.setString(1, p.getfirstName());
@@ -121,7 +121,7 @@ public class PlayerServiceDBImpl extends PlayerServiceImpl {
 	 {
 			String sql = "DELETE FROM players WHERE playerId = ?";
 			try (
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					)
 			{
@@ -147,7 +147,7 @@ public class PlayerServiceDBImpl extends PlayerServiceImpl {
 			int playerId =0;
 			try 
 			(
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql);
 							
 			)

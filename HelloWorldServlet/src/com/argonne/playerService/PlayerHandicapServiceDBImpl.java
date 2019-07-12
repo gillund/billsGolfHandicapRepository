@@ -38,7 +38,7 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 		  String sql = "select * from round where player = ?";
 			try 
 			(
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					
 			)
@@ -117,7 +117,7 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 			
 			ResultSet keys = null;
 			try (
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 					) {
 				stmt.setInt(1, playerId );
@@ -169,7 +169,7 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 	 {
 			String sql = "DELETE FROM round WHERE roundId = ?";
 			try (
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					)
 			{
@@ -208,7 +208,7 @@ public class PlayerHandicapServiceDBImpl extends PlayerHandicapServiceImpl {
 		   Round r= null;;
 			try 
 			(
-					Connection conn = DBUtil.getConnection(DBType.MYSQL);
+					Connection conn = DBUtil.getConnection(DBType.AWS_MYSQL);
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					
 			)

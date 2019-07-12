@@ -43,6 +43,24 @@ public class DateTest
 	//validateJavaDate("");
 	//validateJavaDate("2016-29-5");
 	//validateJavaDate("2019-10-35");
+	   
+	   System.out.println("Loading driver...");
+		try 
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			System.out.println("driver loaded..");
+			System.out.println(System.getProperty("java.class.path"));
+			
+		}
+		catch(ClassNotFoundException e)
+		{
+			System.out.println("driver NOT found");
+			e.printStackTrace();
+		}
+
+	   
+	   
+	   
 	validateJavaDate("2019-10-30");
 	validateJavaDate("2019-12-01");
    }

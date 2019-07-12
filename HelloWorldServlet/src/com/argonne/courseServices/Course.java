@@ -91,7 +91,10 @@ public class Course {
 		this.comments = comments;
 	}
 
-	
+	public String toString()
+	{
+		return name;
+	}
     
     
 }

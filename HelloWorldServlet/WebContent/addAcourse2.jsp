@@ -11,7 +11,7 @@
     <%
            CourseService courseService 			= JhandicapFactory.getCourseService();
            Hashtable courses 					=  courseService.getAllCourses();
-           Vector sortedCourses 				= getCourseList(courses);
+           List	 sortedCourses 					= getCourseList(courses);
     %>
 
   <i><h1 align="center" > Add Courses  </h1></i>
